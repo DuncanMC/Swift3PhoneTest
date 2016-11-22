@@ -19,6 +19,7 @@
 /* Begin PBXFileReference section */
 		AE3B79DE1DDE3BE200218FA7 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		AE9A39FD1DE4A94A008695C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AE9A39FE1DE4B2E5008695C0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AEC0EA851DE33A1F0073CC46 /* DataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataObject.swift; sourceTree = "<group>"; };
 		AECB59061DD381640060D5FE /* Swift3PhoneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift3PhoneTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECB59091DD381640060D5FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		AECB58FD1DD381640060D5FE = {
 			isa = PBXGroup;
 			children = (
+				AE9A39FE1DE4B2E5008695C0 /* README.md */,
 				AECB59081DD381640060D5FE /* Swift3PhoneTest */,
 				AECB59071DD381640060D5FE /* Products */,
 			);
