@@ -60,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				AECB59091DD381640060D5FE /* AppDelegate.swift */,
-				AE9A39FD1DE4A94A008695C0 /* .gitignore */,
 				AECB590B1DD381640060D5FE /* ViewController.swift */,
 				AEC0EA851DE33A1F0073CC46 /* DataObject.swift */,
 				AECB590D1DD381640060D5FE /* Main.storyboard */,
@@ -68,6 +67,7 @@
 				AECB59121DD381640060D5FE /* LaunchScreen.storyboard */,
 				AECB59151DD381640060D5FE /* Info.plist */,
 				AE3B79DE1DDE3BE200218FA7 /* Dispatch.swift */,
+				AE9A39FD1DE4A94A008695C0 /* .gitignore */,
 			);
 			path = Swift3PhoneTest;
 			sourceTree = "<group>";
