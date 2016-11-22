@@ -77,16 +77,16 @@ class ViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
 
-    //This call uses a custom class I created simply to make calling dispatch_after simpler.
+    //This call uses an extension to DispatchQueue I created simply to make calling dispatch_after simpler.
     //It takes a delay in decimal seconds.
     //By default it uses the main dispatch queue, which runs your code on the main thread.
     
-    Dispatch.after(0.5) {
+    DispatchQueue.after(0.5) {
       print("0.5 seconds after viewWillAppear, Run on main thread = \(Thread.isMainThread)")
     }
     
     //You can also pass in a dispatch queue to use, like below.
-    Dispatch.after(1.5, queue: DispatchQueue.global()) {
+    DispatchQueue.after(1.5, queue: DispatchQueue.global()) {
       print("1.5 seconds after viewWillAppear, Run on main thread = \(Thread.isMainThread)")
     }
 

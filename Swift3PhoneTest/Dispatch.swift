@@ -9,27 +9,27 @@
 import UIKit
 
 /**
- This is a sample class that offers a function `Dispatch(after:execute:)` that takes a delay in decimal seconds. 
+ This is a simple extension to DispatchQueue that offers a function `DispatchQueue.after(_:execute)` that takes a delay in decimal seconds.
  
  It's sole purpose is to simplify the most common use of the GCD call formerly known as `dispatch_after()` when used on the main thread with a delay expressed in seconds.
  
  Useage:
  ```
-      Dispatch.after(0.5) {
-        //your code here
-      }
+DispatchQueue.after(0.5) {
+  //your code here
+}
  ```
  You can also specify a different dispatch queue to use, e.g.:
 
  ```
- Dispatch.after(0.5, queue: DispatchQueue.global()) {
+ DispatchQueue.after(0.5, queue: DispatchQueue.global()) {
  //your code here
  }
  ```
 
  */
 
-class Dispatch  {
+extension DispatchQueue  {
   class func after(_ delay: TimeInterval,
                    queue: DispatchQueue = DispatchQueue.main,
                    execute: @escaping ()->Void) {
