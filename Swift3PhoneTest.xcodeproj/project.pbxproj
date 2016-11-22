@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE3B79DF1DDE3BE200218FA7 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B79DE1DDE3BE200218FA7 /* Dispatch.swift */; };
+		AEC0EA861DE33A1F0073CC46 /* DataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC0EA851DE33A1F0073CC46 /* DataObject.swift */; };
 		AECB590A1DD381640060D5FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECB59091DD381640060D5FE /* AppDelegate.swift */; };
 		AECB590C1DD381640060D5FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECB590B1DD381640060D5FE /* ViewController.swift */; };
 		AECB590F1DD381640060D5FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AECB590D1DD381640060D5FE /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE3B79DE1DDE3BE200218FA7 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		AEC0EA851DE33A1F0073CC46 /* DataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataObject.swift; sourceTree = "<group>"; };
 		AECB59061DD381640060D5FE /* Swift3PhoneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift3PhoneTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECB59091DD381640060D5FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AECB590B1DD381640060D5FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +60,12 @@
 			children = (
 				AECB59091DD381640060D5FE /* AppDelegate.swift */,
 				AECB590B1DD381640060D5FE /* ViewController.swift */,
+				AEC0EA851DE33A1F0073CC46 /* DataObject.swift */,
 				AECB590D1DD381640060D5FE /* Main.storyboard */,
 				AECB59101DD381640060D5FE /* Assets.xcassets */,
 				AECB59121DD381640060D5FE /* LaunchScreen.storyboard */,
 				AECB59151DD381640060D5FE /* Info.plist */,
+				AE3B79DE1DDE3BE200218FA7 /* Dispatch.swift */,
 			);
 			path = Swift3PhoneTest;
 			sourceTree = "<group>";
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					AECB59051DD381640060D5FE = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VBNQV8KG4G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC0EA861DE33A1F0073CC46 /* DataObject.swift in Sources */,
+				AE3B79DF1DDE3BE200218FA7 /* Dispatch.swift in Sources */,
 				AECB590C1DD381640060D5FE /* ViewController.swift in Sources */,
 				AECB590A1DD381640060D5FE /* AppDelegate.swift in Sources */,
 			);
@@ -187,6 +196,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VBNQV8KG4G;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -203,7 +213,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -236,6 +246,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = VBNQV8KG4G;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -246,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -297,6 +308,7 @@
 				AECB591A1DD381640060D5FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
