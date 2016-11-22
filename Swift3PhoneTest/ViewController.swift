@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     UserDefaults.standard.set(data, forKey: "dataObjectData")
   }
   
-  //MARK: - overriden UIViewController methods
+  //MARK: - Overriden UIViewController methods
 
   override func viewWillAppear(_ animated: Bool) {
     
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
    
    The pattern is as follows:
    1. Start the activity indicator
-   2. Wrap your time-consuming code in an async call so you serve the event loop before it begins executing. (this lets the activity indicator start spinning.)
+   2. Wrap your time-consuming code in an async call with a tiny delay so you serve the event loop before it begins executing. (this lets the activity indicator start spinning.)
       - Once your time-consuming task is complete, call activityIndicator.stopAnimating() inside your async block
    */
   
@@ -121,7 +121,16 @@ class ViewController: UIViewController {
     
     activityIndicator.startAnimating()
     sender.isEnabled = false
-    DispatchQueue.main.async() {
+    
+    /*
+     This code shows the new Swift 3 way of calling the GCD function dispatch_after (now asyncAfter. It takes a 
+     DispatchTime, which is a UInt64 that reprepsents a system time, which is a count in nanoseconds.
+     We use .now(), which returns the current system time. There is an overridden form of the "+" operator 
+     that takes a DispatchTime and a double containing decimal seconds. 
+     It converts the decimal seconds to integer nanoseconds and adds them to the DispatchTime.
+     */
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
       [weak self] in
       guard let strongSelf = self else {
         return
