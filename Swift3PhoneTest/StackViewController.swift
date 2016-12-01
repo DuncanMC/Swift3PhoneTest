@@ -66,7 +66,8 @@ class StackViewController: UIViewController {
     
     //If there is no longer enough room for another view, 
     //disable the add button
-    if stackView.bounds.width + viewWidth + stackView.spacing > self.view.bounds.width {
+    let margins = self.view.layoutMargins.left + self.view.layoutMargins.right
+    if stackView.bounds.width + viewWidth + stackView.spacing > self.view.bounds.width - margins {
       sender.isEnabled = false
     }
     
