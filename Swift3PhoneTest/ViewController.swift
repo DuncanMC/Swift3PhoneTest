@@ -138,7 +138,7 @@ class ViewController: UIViewController {
     sender.isEnabled = false
     
     /*
-     This code shows the new Swift 3 way of calling the GCD function dispatch_after (now asyncAfter. It takes a 
+     This code shows the new Swift 3 way of calling the GCD function dispatch_after. (now asyncAfter) It takes a
      DispatchTime, which is a UInt64 that reprepsents a system time, which is a count in nanoseconds.
      We use .now(), which returns the current system time. There is an overridden form of the "+" operator 
      that takes a DispatchTime and a double containing decimal seconds. 
