@@ -10,7 +10,7 @@ import UIKit
 
 enum CodingKeys: String {
   case string1
-  case optionalString
+  case optionalTime
 }
 
 /**
@@ -32,7 +32,7 @@ public class DataObject: NSObject, NSSecureCoding {
   
 
   var string1: String
-  var optionalString: String?
+  var optionalTime: TimeInterval?
   
   override init() {
     string1 = "string1"
@@ -49,11 +49,11 @@ public class DataObject: NSObject, NSSecureCoding {
     self.init()
     string1 = aDecoder.decodeObject(of: NSString.self,
                                     forKey: CodingKeys.string1.rawValue) as! String
-    if aDecoder.containsValue(forKey: "optionalString") {
-      optionalString = aDecoder.decodeObject(of: NSString.self,
-                                             forKey: CodingKeys.optionalString.rawValue) as String?
+    if aDecoder.containsValue(forKey: CodingKeys.optionalTime.rawValue) {
+      optionalTime = aDecoder.decodeObject(of: NSNumber.self,
+                                             forKey: CodingKeys.optionalTime.rawValue) as Double?
     } else {
-      optionalString = nil
+      optionalTime = nil
     }
   }
   
@@ -63,8 +63,8 @@ public class DataObject: NSObject, NSSecureCoding {
   
   public func encode(with aCoder: NSCoder) {
     aCoder.encode(string1, forKey: CodingKeys.string1.rawValue)
-    if let string = optionalString {
-      aCoder.encode(string, forKey: CodingKeys.optionalString.rawValue)
+    if let time = optionalTime {
+      aCoder.encode(NSNumber(value:time), forKey: CodingKeys.optionalTime.rawValue)
     }
   }
 }

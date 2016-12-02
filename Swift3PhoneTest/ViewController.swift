@@ -8,15 +8,18 @@
 
 import UIKit
 
+typealias hms = (h: Int, m: Int, s: Int)
+
 class ViewController: UIViewController {
   
   //MARK: - IBOutlets
 
   @IBOutlet weak var string1Field: UITextField!
-  @IBOutlet weak var optionalStringField: UITextField!
+  @IBOutlet weak var optionalTimeField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var timeValueLabel: UILabel!
 
+  var datePickerView: UIDatePicker!
   
   //MARK: - Properties
   
@@ -59,14 +62,20 @@ class ViewController: UIViewController {
   }
   
   //MARK: - Instance methods
+  
+  func hmsToString(_ timeTuple: hms) -> String {
+    return String("\(timeTuple.h)H:\(timeTuple.m)M:\(timeTuple.s)S")
+
+  }
+  func secondsToHoursMinutesSeconds (duration : Double) -> hms {
+    let seconds:Int = Int(duration)
+    return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+  }
+
  
   func saveDataObject() {
     dataObject.string1 = string1Field.text ?? ""
-    var string: String! = optionalStringField.text
-    if string.isEmpty {
-      string = nil
-    }
-    dataObject.optionalString = string
+    
 
     //This code converts our DataObject to NSData so we can save it. In order to do this the object must conform to NSCoding or NSSecureCoding.
     let data = NSKeyedArchiver.archivedData(withRootObject: dataObject)
@@ -94,7 +103,56 @@ class ViewController: UIViewController {
 
     //When our view first appears, display the values from our DataObject into our text fields.
     string1Field.text = dataObject.string1
-    optionalStringField.text = dataObject.optionalString ?? ""
+    if let time = dataObject.optionalTime {
+      optionalTimeField.text = hmsToString(secondsToHoursMinutesSeconds(duration: time))
+    } else {
+      optionalTimeField.text = ""
+    }
+  }
+  
+  func clearDatePickerPressed(){
+    self.view.endEditing(true)
+    dataObject.optionalTime = nil
+    optionalTimeField.text = ""
+  }
+
+  func doneDatePickerPressed(){
+    self.view.endEditing(true)
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // date picker setup
+    datePickerView = UIDatePicker()
+    
+    // choose the mode you want
+    // other options are: DateAndTime, Time, CountDownTimer
+    datePickerView.datePickerMode = UIDatePickerMode.countDownTimer
+    
+    // choose your locale or leave the default (system)
+    //datePickerView.locale = NSLocale.init(localeIdentifier: "it_IT")
+    
+    datePickerView.addTarget(self, action: #selector(onDatePickerValueChanged(_:)),
+                             for: [.valueChanged, .touchDragInside])
+    optionalTimeField.inputView = datePickerView
+    
+    // datepicker toolbar setup
+    let toolBar = UIToolbar()
+    toolBar.barStyle = UIBarStyle.default
+    toolBar.isTranslucent = true
+    let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(doneDatePickerPressed))
+
+    let clear = UIBarButtonItem(title: "Clear", style: UIBarButtonItemStyle.done, target: self, action: #selector(clearDatePickerPressed))
+
+    // if you remove the space element, the "done" button will be left aligned
+    // you can add more items if you want
+    toolBar.setItems([clear, space, doneButton], animated: false)
+    toolBar.isUserInteractionEnabled = true
+    toolBar.sizeToFit()
+    
+    optionalTimeField.inputAccessoryView = toolBar
+  
   }
   
   /**
@@ -122,7 +180,16 @@ class ViewController: UIViewController {
   }
   
   //MARK: - IBAction methods 
+ 
+  @IBAction func onDatePickerValueChanged(_ sender: UIDatePicker) {
+    print("in \(#function)")
+    let duration = sender.countDownDuration
+    let hms = secondsToHoursMinutesSeconds (duration: duration)
+    optionalTimeField.text = hmsToString(hms)
+    dataObject.optionalTime = duration
+  }
   
+
   /**
    This button action shows how to manage an activity indicator when you have a long-running block of code that runs **on the main thread**.
    
@@ -170,9 +237,24 @@ class ViewController: UIViewController {
  */
 
 extension ViewController: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    self.setEditing(false, animated: true)
-    textField.resignFirstResponder()
+  
+  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    if textField === optionalTimeField {
+      
+      //Set the flag below to true for a work-around that fixes *most* cases of this bug.
+      #if false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+          self.datePickerView.countDownDuration = self.dataObject.optionalTime ?? 60
+        }
+      #endif
+      
+    }
     return true
   }
+
+func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+  self.setEditing(false, animated: true)
+  textField.resignFirstResponder()
+  return true
+}
 }

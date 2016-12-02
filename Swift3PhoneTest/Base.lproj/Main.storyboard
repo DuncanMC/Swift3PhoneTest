@@ -69,8 +69,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="36G-Of-H5C"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OptionalString" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqV-Hh-rdW">
-                                <rect key="frame" x="20" y="234.5" width="115" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OptionalDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqV-Hh-rdW">
+                                <rect key="frame" x="20" y="234.5" width="115" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="FsO-nN-Xz7"/>
                                 </constraints>
@@ -112,7 +112,7 @@
                     <navigationItem key="navigationItem" id="zsV-Mg-1Ob"/>
                     <connections>
                         <outlet property="activityIndicator" destination="AzE-HX-4gv" id="BS3-mc-4Xt"/>
-                        <outlet property="optionalStringField" destination="tBZ-IP-38h" id="2pr-FP-tgE"/>
+                        <outlet property="optionalTimeField" destination="tBZ-IP-38h" id="Srn-dh-Gxo"/>
                         <outlet property="string1Field" destination="8nk-nB-06T" id="KOQ-LA-PPb"/>
                         <outlet property="timeValueLabel" destination="okP-WK-aPG" id="Prv-b6-Wgw"/>
                     </connections>
