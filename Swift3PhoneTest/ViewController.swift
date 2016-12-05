@@ -238,11 +238,15 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
   
+   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    return false
+  }
+  
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     if textField === optionalTimeField {
       
       //Set the flag below to true for a work-around that fixes *most* cases of this bug.
-      #if false
+      #if true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
           self.datePickerView.countDownDuration = self.dataObject.optionalTime ?? 60
         }

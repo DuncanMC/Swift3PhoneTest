@@ -23,6 +23,39 @@ class StackViewController: UIViewController {
   @IBOutlet weak var addButton: UIButton!
   @IBOutlet weak var removeButton: UIButton!
   
+  let allColors = [UIColor.blue,
+                UIColor.red,
+                UIColor.green,
+                UIColor.cyan,
+                UIColor.yellow,
+                UIColor.black,
+                UIColor.orange,
+                UIColor.purple,
+                UIColor.magenta,
+                UIColor.brown,
+                UIColor.darkGray,
+                UIColor.gray]
+
+  var colors: [UIColor]
+  
+  required init?(coder aDecoder: NSCoder) {
+    colors = allColors
+    super.init(coder: aDecoder)
+  }
+  
+  func randomColor() -> UIColor {
+    if colors.count == 0 {
+      colors = allColors
+    }
+    let index = Int(arc4random_uniform(UInt32(colors.count)))
+      return colors.remove(at: index)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    handleAddItem(nil)
+  }
+  
   //MARK - custom instance methods
 
   /**
@@ -35,22 +68,28 @@ class StackViewController: UIViewController {
                                        
                                        width: viewWidth,
                                        height: viewHeight))
-    newView.backgroundColor = UIColor.blue
+    newView.backgroundColor = randomColor()
     newView.translatesAutoresizingMaskIntoConstraints = false
     newView.widthAnchor.constraint(equalToConstant: viewWidth).isActive = true
     newView.heightAnchor.constraint(equalToConstant: viewHeight).isActive = true
+    newView.borderColor = UIColor.black
+    newView.borderWidth = 1
+    newView.cornerRadius = 5
     return newView
   }
   
 
   //MARK - IBActions
 
-  @IBAction func handleRemoveItem(_ sender: UIButton) {
+  @IBAction func handleRemoveItem(_ sender: UIButton?) {
     if let item = stackView.arrangedSubviews.first {
       item.removeFromSuperview()
+      UIView.animate(withDuration: 0.2) {
+        self.stackView.layoutIfNeeded()
+      }
     }
     if stackView.arrangedSubviews.count == 0 {
-      sender.isEnabled = false
+      sender?.isEnabled = false
     }
     
     //Since we just removed a view, there MUST be room to add one, 
@@ -58,17 +97,21 @@ class StackViewController: UIViewController {
     addButton.isEnabled = true
   }
   
-  @IBAction func handleAddItem(_ sender: UIButton) {
+  @IBAction func handleAddItem(_ sender: UIButton?) {
     
     let newView = createNewView()
-    stackView.addArrangedSubview(newView)
-    stackView.layoutIfNeeded()
+    self.stackView.addArrangedSubview(newView)
+    if sender != nil {
+      UIView.animate(withDuration: 0.2) {
+        self.stackView.layoutIfNeeded()
+      }
+    }
     
-    //If there is no longer enough room for another view, 
+    //If there is no longer enough room for another view,
     //disable the add button
     let margins = self.view.layoutMargins.left + self.view.layoutMargins.right
     if stackView.bounds.width + viewWidth + stackView.spacing > self.view.bounds.width - margins {
-      sender.isEnabled = false
+      sender?.isEnabled = false
     }
     
     //Since we just added a view, there MUST be room to remove one,

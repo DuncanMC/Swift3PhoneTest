@@ -22,7 +22,6 @@ protocol LayerProperties {
 extension UIView: LayerProperties {
   
   @IBInspectable
-  
   var borderWidth: CGFloat {
     get {
       return self.layer.borderWidth
@@ -32,7 +31,6 @@ extension UIView: LayerProperties {
     }
   }
   @IBInspectable
-  
   var borderColor: UIColor {
     get {
       return UIColor(cgColor: self.layer.borderColor!)
@@ -41,12 +39,14 @@ extension UIView: LayerProperties {
       self.layer.borderColor = newValue.cgColor
     }
   }
+  @IBInspectable
+
   var cornerRadius: CGFloat {
     get {
       return self.layer.cornerRadius
     }
     set {
-      self.layer.cornerRadius = cornerRadius
+      self.layer.cornerRadius = newValue
     }
   }
 

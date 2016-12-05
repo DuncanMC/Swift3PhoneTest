@@ -134,26 +134,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cyY-mc-LM5">
-                                <rect key="frame" x="132" y="114" width="110" height="70"/>
+                                <rect key="frame" x="157" y="114" width="60" height="70"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-L3-Oqc">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="YaK-3d-r9a"/>
-                                            <constraint firstAttribute="width" constant="50" id="x0G-z1-JLH"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZ1-eG-UHP">
-                                        <rect key="frame" x="60" y="0.0" width="50" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="dr7-zc-OuF"/>
-                                            <constraint firstAttribute="width" constant="50" id="mxS-m6-kbi"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="200" constant="60" id="29l-9A-oMS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="IZp-aa-gWQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="Lnu-5s-S6b"/>
+                                    <constraint firstAttribute="height" priority="200" constant="70" id="PjN-Sa-Ozd"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -163,7 +157,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="PVp-mP-v4X">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="PVp-mP-v4X" userLabel="Buttons Stack View">
                                 <rect key="frame" x="72.5" y="607" width="230" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9u-sO-fde">
